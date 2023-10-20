@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://cl5bxoekjjvi1"]
+
+[ext_resource type="Script" path="res://Player.gd" id="1_1xpox"]
+[ext_resource type="Script" path="res://Camera3D.gd" id="1_glsej"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_n1c57"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_nf53t"]
+size = Vector3(0.75, 0.25, 0.5)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sxf73"]
+
+[node name="RigidBody3D" type="RigidBody3D"]
+script = ExtResource("1_1xpox")
+
+[node name="Body" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_n1c57")
+
+[node name="Eye" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0.5)
+mesh = SubResource("BoxMesh_nf53t")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_sxf73")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0.25, 0)
+script = ExtResource("1_glsej")

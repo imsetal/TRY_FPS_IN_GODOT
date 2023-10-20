@@ -1,0 +1,156 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjh6trcyxhjof"]
+
+[ext_resource type="PackedScene" uid="uid://1g612ykd6jik" path="res://assets/tscn/node_3d.tscn" id="1_aia7k"]
+[ext_resource type="Script" path="res://assets/script/test_map.gd" id="1_r1rms"]
+[ext_resource type="PackedScene" uid="uid://7moxrn3ervfe" path="res://assets/tscn/Player.tscn" id="2_o6cpe"]
+
+[node name="junjie_map" type="Node3D"]
+script = ExtResource("1_r1rms")
+PlayerScene = ExtResource("2_o6cpe")
+
+[node name="born" type="Node3D" parent="."]
+
+[node name="0" type="Node3D" parent="born"]
+transform = Transform3D(1.89621, 0, 0, 0, 1, 0, 0, 0, 2.2694, -20.068, 2, -16.51)
+
+[node name="1" type="Node3D" parent="born"]
+transform = Transform3D(1.89621, 0, 0, 0, 1, 0, 0, 0, 2.2694, 20.205, 2, -17.483)
+
+[node name="2" type="Node3D" parent="born"]
+transform = Transform3D(1.89621, 0, 0, 0, 1, 0, 0, 0, 2.2694, 21.127, 2, 16.637)
+
+[node name="3" type="Node3D" parent="born"]
+transform = Transform3D(1.89621, 0, 0, 0, 1, 0, 0, 0, 2.2694, -19.866, 2, 16.996)
+
+[node name="word_camera" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, -8.29861e-08, 0.314523, 0.94925, 2.74964e-08, 0.94925, -0.314523, 0, 29.365, -15.8163)
+
+[node name="Camera3D" type="Camera3D" parent="word_camera"]
+transform = Transform3D(1, 7.99361e-14, 4.44089e-15, 0, 1, -5.96046e-08, 1.77636e-15, 5.96046e-08, 1, -9.05336e-07, 3.82574, 10.3558)
+
+[node name="World" parent="." instance=ExtResource("1_aia7k")]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.21619, 0)
+light_color = Color(0.152941, 0.462745, 0, 1)
+light_energy = 4.618
+light_indirect_energy = 1.804
+light_volumetric_fog_energy = 1.322
+omni_range = 17.52
+
+[node name="OmniLight3D12" type="OmniLight3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.7969, 3.97485, 17.2506)
+light_color = Color(0.152941, 0.462745, 0, 1)
+light_energy = 0.92
+light_indirect_energy = 1.804
+light_volumetric_fog_energy = 1.322
+omni_range = 17.52
+
+[node name="OmniLight3D13" type="OmniLight3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.0712, 3.97485, 17.2506)
+light_color = Color(0.152941, 0.462745, 0, 1)
+light_energy = 0.92
+light_indirect_energy = 1.804
+light_volumetric_fog_energy = 1.322
+omni_range = 17.52
+
+[node name="OmniLight3D14" type="OmniLight3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.7969, 3.97485, -15.5157)
+light_color = Color(0.152941, 0.462745, 0, 1)
+light_energy = 0.92
+light_indirect_energy = 1.804
+light_volumetric_fog_energy = 1.322
+omni_range = 17.52
+
+[node name="OmniLight3D15" type="OmniLight3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.0712, 3.97485, -15.5157)
+light_color = Color(0.152941, 0.462745, 0, 1)
+light_energy = 0.92
+light_indirect_energy = 1.804
+light_volumetric_fog_energy = 1.322
+omni_range = 17.52
+
+[node name="OmniLight3D10" type="OmniLight3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.2714, 3.18353, 0)
+light_color = Color(0.152941, 0.462745, 0, 1)
+light_energy = 4.618
+light_indirect_energy = 1.804
+light_volumetric_fog_energy = 1.322
+omni_range = 17.52
+
+[node name="OmniLight3D11" type="OmniLight3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.4242, 3.18353, 0)
+light_color = Color(0.152941, 0.462745, 0, 1)
+light_energy = 4.618
+light_indirect_energy = 1.804
+light_volumetric_fog_energy = 1.322
+omni_range = 17.52
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.21619, -20.0354)
+light_color = Color(0.152941, 0.462745, 0, 1)
+light_energy = 4.618
+light_indirect_energy = 1.804
+light_volumetric_fog_energy = 1.322
+omni_range = 17.52
+
+[node name="OmniLight3D8" type="OmniLight3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.21619, -11.6247)
+light_color = Color(0.152941, 0.462745, 0, 1)
+light_energy = 4.618
+light_indirect_energy = 1.804
+light_volumetric_fog_energy = 1.322
+omni_range = 17.52
+
+[node name="OmniLight3D9" type="OmniLight3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.21619, 11.9665)
+light_color = Color(0.152941, 0.462745, 0, 1)
+light_energy = 4.618
+light_indirect_energy = 1.804
+light_volumetric_fog_energy = 1.322
+omni_range = 17.52
+
+[node name="OmniLight3D7" type="OmniLight3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.21619, 18.9113)
+light_color = Color(0.152941, 0.462745, 0, 1)
+light_energy = 4.618
+light_indirect_energy = 1.804
+light_volumetric_fog_energy = 1.322
+omni_range = 17.52
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5011, 7.21619, 20.0037)
+light_color = Color(0.152941, 0.462745, 0, 1)
+light_energy = 4.618
+light_indirect_energy = 1.804
+light_volumetric_fog_energy = 1.322
+omni_range = 17.52
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.7971, 1.92812, 20.0037)
+light_color = Color(0.152941, 0.462745, 0, 1)
+light_energy = 4.618
+light_indirect_energy = 1.804
+light_volumetric_fog_energy = 1.322
+omni_range = 17.52
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5011, 4.14952, -22.0503)
+light_color = Color(0.152941, 0.462745, 0, 1)
+light_energy = 4.618
+light_indirect_energy = 1.804
+light_volumetric_fog_energy = 1.322
+omni_range = 17.52
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.7971, -1.13855, -22.0503)
+light_color = Color(0.152941, 0.462745, 0, 1)
+light_energy = 4.618
+light_indirect_energy = 1.804
+light_volumetric_fog_energy = 1.322
+omni_range = 17.52
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="World"]
+transform = Transform3D(0.852613, 0.255946, -0.455569, 0.522543, -0.417617, 0.743334, 0, -0.87183, -0.489808, 0, 18.6376, 0)
+light_energy = 1.644
+light_indirect_energy = 1.161

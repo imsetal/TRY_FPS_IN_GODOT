@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgwa2la48kp5t"]
+
+[ext_resource type="PackedScene" uid="uid://cgfa5m5en702l" path="res://assets/gun/fbxALLGUNS/awp_.fbx" id="1_lgwkc"]
+
+[node name="awp_" instance=ExtResource("1_lgwkc")]
+
+[node name="Cube_040" parent="RootNode" index="0"]
+transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, 0, -0.237225, -0.712357)

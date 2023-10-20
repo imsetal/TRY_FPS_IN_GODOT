@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://be0kwp3uhx8rn"]
+
+[ext_resource type="PackedScene" uid="uid://oubbrwd2dke2" path="res://assets/gun/fbxALLGUNS/ak47black.fbx" id="1_4sxck"]
+
+[node name="ak47black" instance=ExtResource("1_4sxck")]
+
+[node name="Cube_012" parent="RootNode" index="0"]
+transform = Transform3D(-2.18557e-08, 0, -1.127, 0, 0.5, 0, 0.5, 0, -4.92627e-08, 0, -0.232373, 0.00607634)
