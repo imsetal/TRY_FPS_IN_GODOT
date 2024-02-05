@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://7moxrn3ervfe"]
+[gd_scene load_steps=26 format=3 uid="uid://7moxrn3ervfe"]
 
 [ext_resource type="Script" path="res://assets/script/Player.gd" id="1_5hdlv"]
 [ext_resource type="PackedScene" uid="uid://dj5k8xp24kx6b" path="res://assets/gun/Bullet.tscn" id="2_nkqwx"]
@@ -12,7 +12,13 @@
 [ext_resource type="Script" path="res://assets/script/menu.gd" id="9_8ebs6"]
 [ext_resource type="Script" path="res://assets/script/HSlider.gd" id="10_w14gx"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vdam2"]
+albedo_color = Color(0, 0.501961, 1, 1)
+
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_1yt1d"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2vskr"]
+albedo_color = Color(1, 0, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_miaoa"]
 size = Vector3(0.75, 0.25, 0.5)
@@ -81,10 +87,12 @@ awp_scene = ExtResource("5_a28e6")
 
 [node name="Body" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 4.1924e-18, -1.35525e-20, -2.21334e-18, 1, 1.16415e-10, -1.35525e-20, -1.16415e-10, 1, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_vdam2")
 mesh = SubResource("CapsuleMesh_1yt1d")
 
 [node name="Eye" type="MeshInstance3D" parent="Body"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0.5)
+material_override = SubResource("StandardMaterial3D_2vskr")
 mesh = SubResource("BoxMesh_miaoa")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
