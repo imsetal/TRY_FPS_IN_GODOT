@@ -1,0 +1,36 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://dsapjcmmn7650"
+path.s3tc="res://.godot/imported/bullet_001-349e7f9e960853ef5c14a1faa1d398eb_ImphenziaPalette01-256-Gradient.png-ed1f2cb8eea4fae33b1a54e928eb166b.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={}
+
+[deps]
+
+source_file="res://assets/gun/fbxALLGUNS/bullet_001-349e7f9e960853ef5c14a1faa1d398eb_ImphenziaPalette01-256-Gradient.png"
+dest_files=["res://.godot/imported/bullet_001-349e7f9e960853ef5c14a1faa1d398eb_ImphenziaPalette01-256-Gradient.png-ed1f2cb8eea4fae33b1a54e928eb166b.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

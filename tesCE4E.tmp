@@ -1,0 +1,102 @@
+[gd_scene load_steps=10 format=3 uid="uid://y1hyok3o4bbb"]
+
+[ext_resource type="PackedScene" uid="uid://cl5bxoekjjvi1" path="res://Player.tscn" id="1_c68ud"]
+[ext_resource type="Texture2D" uid="uid://bbdsg5ibidm5c" path="res://icon.svg" id="1_eos3q"]
+[ext_resource type="Script" path="res://test.gd" id="1_q7lmk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_18v8u"]
+albedo_texture = ExtResource("1_eos3q")
+
+[sub_resource type="BoxMesh" id="BoxMesh_877i6"]
+size = Vector3(60, 1, 60)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ubcc3"]
+size = Vector3(60, 1, 60)
+
+[sub_resource type="BoxMesh" id="BoxMesh_y2k55"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i5dt0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_obv5p"]
+albedo_texture = ExtResource("1_eos3q")
+
+[node name="Test" type="Node3D"]
+script = ExtResource("1_q7lmk")
+player_scene = ExtResource("1_c68ud")
+
+[node name="ground" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+material_override = SubResource("StandardMaterial3D_18v8u")
+mesh = SubResource("BoxMesh_877i6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_ubcc3")
+
+[node name="Box" type="StaticBody3D" parent="."]
+transform = Transform3D(0.704002, 0, -0.710198, 0, 1, 0, 0.710198, 0, 0.704002, -3.611, 0.5, 9.043)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Box"]
+mesh = SubResource("BoxMesh_y2k55")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Box"]
+shape = SubResource("BoxShape3D_i5dt0")
+
+[node name="Box" type="StaticBody3D" parent="Box"]
+transform = Transform3D(0.106594, 0, -0.715479, 0, 3.4663, 0, 0.107532, 0, 0.709237, -2.91018, 0.5, 0.726428)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Box/Box"]
+mesh = SubResource("BoxMesh_y2k55")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Box/Box"]
+shape = SubResource("BoxShape3D_i5dt0")
+
+[node name="Box2" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.0251935, 1.14892, 21.0613, 0.0142585, 2.03006, -11.9198, 3.30411, 3.4759e-08, 0.212032, -3.64663, 4.81985, 12.9789)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Box2"]
+material_override = SubResource("StandardMaterial3D_obv5p")
+mesh = SubResource("BoxMesh_y2k55")
+skeleton = NodePath("../../Box2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Box2"]
+shape = SubResource("BoxShape3D_i5dt0")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 326.0
+offset_right = 488.0
+offset_bottom = 55.0
+text = "host"
+
+[node name="Button2" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 558.0
+offset_top = 1.0
+offset_right = 720.0
+offset_bottom = 56.0
+text = "client
+"
+
+[node name="born" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.52442, 0)
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://Player.tscn", "res://Bullet.tscn")
+spawn_path = NodePath("..")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.856564, -0.178103, 0.484331, -0.51604, -0.29563, 0.803931, 0, -0.938553, -0.345135, -0.000645161, 27.1711, 0.00227273)
+light_color = Color(1, 0.952941, 0.945098, 1)
+light_energy = 1.914
+
+[connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Control/Button2" to="." method="_on_button_2_pressed"]

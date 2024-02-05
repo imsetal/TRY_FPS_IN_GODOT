@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://blfwah4dbd27u"]
+
+[ext_resource type="Script" path="res://assets/script/gun.gd" id="1_q36y3"]
+[ext_resource type="PackedScene" uid="uid://dj5k8xp24kx6b" path="res://assets/gun/Bullet.tscn" id="2_dhaus"]
+[ext_resource type="Script" path="res://assets/gun/recoil.gd" id="2_sv8hv"]
+[ext_resource type="PackedScene" uid="uid://coefrhywx75ai" path="res://assets/tscn/text_box.tscn" id="3_ilwju"]
+[ext_resource type="PackedScene" uid="uid://dgwa2la48kp5t" path="res://assets/gun/model/awp_model.tscn" id="3_juset"]
+
+[node name="awp" type="Node3D"]
+script = ExtResource("1_q36y3")
+bullet_scene = ExtResource("2_dhaus")
+speed = 800
+power = 100
+magazine_capacity = 5
+fire_time = 1.0
+mode = 2
+aim_mode = 1
+
+[node name="gun" type="Node3D" parent="."]
+
+[node name="awp_" parent="gun" instance=ExtResource("3_juset")]
+
+[node name="recoil" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+script = ExtResource("2_sv8hv")
+vertical_max = 2.0
+horizontal_max = 2.0
+
+[node name="extends RigidBody3D" parent="recoil" instance=ExtResource("3_ilwju")]
+visible = false

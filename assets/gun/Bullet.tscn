@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://dj5k8xp24kx6b"]
+
+[ext_resource type="Script" path="res://assets/script/Node3D.gd" id="1_s41o2"]
+[ext_resource type="PackedScene" uid="uid://coefrhywx75ai" path="res://assets/tscn/text_box.tscn" id="2_fmbsd"]
+[ext_resource type="Texture2D" uid="uid://bi23xvdl78f4m" path="res://bullet.png" id="3_4avl7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kkk3n"]
+albedo_texture = ExtResource("3_4avl7")
+
+[sub_resource type="SphereMesh" id="SphereMesh_8ty6y"]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_doysi"]
+radius = 0.02
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_he3d0"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
+[node name="Bullet" type="RigidBody3D"]
+gravity_scale = 0.0
+script = ExtResource("1_s41o2")
+test_box = ExtResource("2_fmbsd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_kkk3n")
+mesh = SubResource("SphereMesh_8ty6y")
+
+[node name="bullet" type="Area3D" parent="."]
+
+[node name="self" type="CollisionShape3D" parent="bullet"]
+shape = SubResource("SphereShape3D_doysi")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_he3d0")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(1, 1, 0, 1)
+
+[connection signal="body_entered" from="bullet" to="." method="_on_bullet_body_entered"]
+[connection signal="body_exited" from="bullet" to="." method="_on_bullet_body_exited"]

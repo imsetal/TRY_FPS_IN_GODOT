@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://coefrhywx75ai"]
+
+[ext_resource type="Texture2D" uid="uid://bi23xvdl78f4m" path="res://bullet.png" id="1_n056p"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f48in"]
+albedo_texture = ExtResource("1_n056p")
+
+[sub_resource type="SphereMesh" id="SphereMesh_qhw33"]
+radius = 0.1
+height = 0.2
+
+[node name="extends RigidBody3D" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_f48in")
+mesh = SubResource("SphereMesh_qhw33")

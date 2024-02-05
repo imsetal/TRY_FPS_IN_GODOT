@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://pbou8arp1fq0"]
+
+[ext_resource type="Script" path="res://assets/script/gun.gd" id="1_e6q65"]
+[ext_resource type="PackedScene" uid="uid://dj5k8xp24kx6b" path="res://assets/gun/Bullet.tscn" id="2_i0p5f"]
+[ext_resource type="Script" path="res://assets/gun/recoil.gd" id="3_82tyi"]
+[ext_resource type="PackedScene" uid="uid://bxq8c22uyc6gv" path="res://assets/gun/model/glockblack_model.tscn" id="3_ew4wf"]
+[ext_resource type="PackedScene" uid="uid://coefrhywx75ai" path="res://assets/tscn/text_box.tscn" id="4_docbp"]
+
+[node name="pistol" type="Node3D"]
+script = ExtResource("1_e6q65")
+bullet_scene = ExtResource("2_i0p5f")
+power = 25
+switch_time = 1.2
+fire_time = 0.2
+
+[node name="gun" type="Node3D" parent="."]
+
+[node name="glockblack_model" parent="gun" instance=ExtResource("3_ew4wf")]
+
+[node name="recoil" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+script = ExtResource("3_82tyi")
+vertical = 1.0
+vertical_max = 1.2
+horizontal = 1.0
+horizontal_max = 1.2
+rotational_time = 0.3
+
+[node name="extends RigidBody3D" parent="recoil" instance=ExtResource("4_docbp")]
+visible = false

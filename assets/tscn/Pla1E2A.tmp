@@ -1,0 +1,364 @@
+[gd_scene load_steps=24 format=3 uid="uid://7moxrn3ervfe"]
+
+[ext_resource type="Script" path="res://assets/script/Player.gd" id="1_5hdlv"]
+[ext_resource type="PackedScene" uid="uid://dj5k8xp24kx6b" path="res://assets/gun/Bullet.tscn" id="2_nkqwx"]
+[ext_resource type="Script" path="res://assets/script/Camera3D.gd" id="3_syt0n"]
+[ext_resource type="PackedScene" uid="uid://pbou8arp1fq0" path="res://assets/gun/pistol.tscn" id="4_1q1mj"]
+[ext_resource type="Script" path="res://assets/script/feedback.gd" id="4_r05k0"]
+[ext_resource type="PackedScene" uid="uid://dkt1xg26bovot" path="res://assets/gun/ak_47.tscn" id="4_xohlr"]
+[ext_resource type="PackedScene" uid="uid://blfwah4dbd27u" path="res://assets/gun/awp.tscn" id="5_a28e6"]
+[ext_resource type="Script" path="res://assets/script/Hand.gd" id="7_y6vx1"]
+[ext_resource type="Script" path="res://assets/tscn/Control.gd" id="8_ffx4q"]
+[ext_resource type="Script" path="res://assets/script/menu.gd" id="9_8ebs6"]
+[ext_resource type="Script" path="res://assets/script/HSlider.gd" id="10_w14gx"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_1yt1d"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_miaoa"]
+size = Vector3(0.75, 0.25, 0.5)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_60mcv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qyt4r"]
+font_size = 80
+font_color = Color(0, 1, 0, 0.509804)
+
+[sub_resource type="LabelSettings" id="LabelSettings_d1o7o"]
+font_size = 48
+font_color = Color(1, 1, 1, 0.768627)
+
+[sub_resource type="LabelSettings" id="LabelSettings_cvvsd"]
+font_size = 100
+
+[sub_resource type="LabelSettings" id="LabelSettings_pblu2"]
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_1e6or"]
+font_size = 24
+font_color = Color(1, 0.952941, 0.823529, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_axima"]
+font_size = 64
+font_color = Color(1, 0.964706, 0.862745, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_56aju"]
+font_size = 64
+font_color = Color(0.529412, 0.529412, 0.529412, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_gifan"]
+font_size = 64
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_bigyb"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/sync = true
+properties/0/watch = false
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/sync = true
+properties/1/watch = false
+properties/2/path = NodePath("Camera3D:rotation")
+properties/2/spawn = true
+properties/2/sync = true
+properties/2/watch = false
+properties/3/path = NodePath("CollisionShape3D:disabled")
+properties/3/spawn = true
+properties/3/sync = true
+properties/3/watch = false
+properties/4/path = NodePath("Body:position")
+properties/4/spawn = true
+properties/4/sync = true
+properties/4/watch = false
+properties/5/path = NodePath("Body:rotation")
+properties/5/spawn = true
+properties/5/sync = true
+properties/5/watch = false
+properties/6/path = NodePath("Camera3D:position")
+properties/6/spawn = true
+properties/6/sync = true
+properties/6/watch = false
+
+[node name="CharacterBody3D" type="CharacterBody3D"]
+transform = Transform3D(1, 7.24762e-11, -5.99242e-14, -7.24762e-11, 0.999999, -0.00165806, -5.99242e-14, 0.00165806, 0.999999, 0, 1, 0)
+script = ExtResource("1_5hdlv")
+bullet_scene = ExtResource("2_nkqwx")
+pistol_scene = ExtResource("4_1q1mj")
+ak47_scene = ExtResource("4_xohlr")
+awp_scene = ExtResource("5_a28e6")
+
+[node name="Body" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 4.1924e-18, -1.35525e-20, -2.21334e-18, 1, 1.16415e-10, -1.35525e-20, -1.16415e-10, 1, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_1yt1d")
+
+[node name="Eye" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0.5)
+mesh = SubResource("BoxMesh_miaoa")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 4.1924e-18, -1.35525e-20, -2.21334e-18, 1, 1.16415e-10, -1.35525e-20, -1.16415e-10, 1, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_60mcv")
+
+[node name="camera_pos" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6.93889e-18, 0.4, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, -5.82576e-17, 8.74229e-08, -8.32667e-17, 1, 0, -8.74228e-08, 0, -1, 0, 0.4, 0)
+script = ExtResource("3_syt0n")
+
+[node name="Hand" type="Node3D" parent="Camera3D"]
+transform = Transform3D(-1, 1.66533e-16, -8.74228e-08, 6.2897e-18, 1, 0, 8.74228e-08, 0, -1, 0.512119, -0.281521, -0.780586)
+script = ExtResource("7_y6vx1")
+
+[node name="Control" type="Control" parent="Camera3D"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("8_ffx4q")
+
+[node name="hp" type="Label" parent="Camera3D/Control"]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 534.0
+offset_right = 261.0
+offset_bottom = 647.0
+text = "HP:"
+label_settings = SubResource("LabelSettings_qyt4r")
+
+[node name="crosshair" type="Label" parent="Camera3D/Control"]
+layout_mode = 0
+offset_left = 569.0
+offset_top = 276.0
+offset_right = 680.0
+offset_bottom = 372.0
+text = "."
+label_settings = SubResource("LabelSettings_d1o7o")
+
+[node name="Marker2D" type="Marker2D" parent="Camera3D/Control"]
+position = Vector2(576, 324)
+
+[node name="dead" type="Control" parent="Camera3D/Control"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Camera3D/Control/dead"]
+layout_mode = 0
+offset_left = 426.0
+offset_top = 182.0
+offset_right = 726.0
+offset_bottom = 319.0
+text = "你死了"
+label_settings = SubResource("LabelSettings_cvvsd")
+
+[node name="relive_button" type="Button" parent="Camera3D/Control/dead"]
+layout_mode = 0
+offset_left = 422.0
+offset_top = 379.0
+offset_right = 731.0
+offset_bottom = 453.0
+text = "重生"
+
+[node name="feedback" type="Label" parent="Camera3D/Control"]
+modulate = Color(1, 0.435294, 0.364706, 1)
+layout_mode = 0
+offset_left = 601.0
+offset_top = 306.0
+offset_right = 714.0
+offset_bottom = 343.0
+text = "feedback"
+label_settings = SubResource("LabelSettings_pblu2")
+script = ExtResource("4_r05k0")
+
+[node name="in_switch" type="Label" parent="Camera3D/Control"]
+layout_mode = 0
+offset_left = 541.0
+offset_top = 368.0
+offset_right = 613.0
+offset_bottom = 403.0
+text = "换弹中"
+label_settings = SubResource("LabelSettings_1e6or")
+
+[node name="now_magazine" type="Label" parent="Camera3D/Control"]
+layout_mode = 0
+offset_left = 1032.0
+offset_top = 547.0
+offset_right = 1130.0
+offset_bottom = 638.0
+text = "0"
+label_settings = SubResource("LabelSettings_axima")
+
+[node name="awp_scope" type="Control" parent="Camera3D/Control"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Line2D" type="Line2D" parent="Camera3D/Control/awp_scope"]
+position = Vector2(0, 324)
+points = PackedVector2Array(1, -2, 1151, -2)
+width = 1.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="Line2D2" type="Line2D" parent="Camera3D/Control/awp_scope"]
+position = Vector2(576, 0)
+rotation = 1.5708
+points = PackedVector2Array(1, -2, 1151, -2)
+width = 1.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="in_fire_time" type="Label" parent="Camera3D/Control"]
+layout_mode = 0
+offset_left = 541.0
+offset_top = 399.0
+offset_right = 637.0
+offset_bottom = 434.0
+text = "开火冷却"
+label_settings = SubResource("LabelSettings_1e6or")
+
+[node name="character_choice" type="Control" parent="Camera3D/Control"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="assault" type="Button" parent="Camera3D/Control/character_choice"]
+layout_mode = 0
+offset_left = 391.0
+offset_top = 444.0
+offset_right = 509.0
+offset_bottom = 475.0
+text = "突击"
+
+[node name="investigation" type="Button" parent="Camera3D/Control/character_choice"]
+layout_mode = 0
+offset_left = 642.0
+offset_top = 444.0
+offset_right = 763.0
+offset_bottom = 475.0
+text = "侦察"
+
+[node name="Label2" type="Label" parent="Camera3D/Control/character_choice"]
+layout_mode = 0
+offset_left = 454.0
+offset_top = 128.0
+offset_right = 710.0
+offset_bottom = 216.0
+text = "选择兵种"
+label_settings = SubResource("LabelSettings_56aju")
+
+[node name="Label" type="Label" parent="Camera3D/Control/character_choice"]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 123.0
+offset_right = 704.0
+offset_bottom = 211.0
+text = "选择兵种"
+label_settings = SubResource("LabelSettings_gifan")
+
+[node name="menu" type="Control" parent="Camera3D/Control"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("9_8ebs6")
+
+[node name="ColorRect" type="ColorRect" parent="Camera3D/Control/menu"]
+layout_mode = 0
+offset_right = 1157.0
+offset_bottom = 651.0
+color = Color(0, 0, 0, 0.592157)
+
+[node name="Label2" type="Label" parent="Camera3D/Control/menu"]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 126.0
+offset_right = 290.0
+offset_bottom = 214.0
+text = "暂停菜单"
+label_settings = SubResource("LabelSettings_56aju")
+
+[node name="Label" type="Label" parent="Camera3D/Control/menu"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 121.0
+offset_right = 284.0
+offset_bottom = 209.0
+text = "暂停菜单"
+label_settings = SubResource("LabelSettings_gifan")
+
+[node name="option" type="Button" parent="Camera3D/Control/menu"]
+layout_mode = 0
+offset_left = 97.0
+offset_top = 263.0
+offset_right = 305.0
+offset_bottom = 307.0
+text = "设置"
+
+[node name="option_menu" type="Control" parent="Camera3D/Control/menu"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="sensitivity" type="HSlider" parent="Camera3D/Control/menu/option_menu"]
+layout_mode = 0
+offset_left = 590.0
+offset_top = 188.0
+offset_right = 1030.0
+offset_bottom = 204.0
+min_value = 0.01
+max_value = 10.0
+step = 0.01
+value = 1.0
+script = ExtResource("10_w14gx")
+
+[node name="value" type="Label" parent="Camera3D/Control/menu/option_menu/sensitivity"]
+layout_mode = 0
+offset_left = 455.0
+offset_top = -8.0
+offset_right = 497.0
+offset_bottom = 18.0
+text = "value
+"
+
+[node name="Label" type="Label" parent="Camera3D/Control/menu/option_menu/sensitivity"]
+layout_mode = 0
+offset_left = -92.0
+offset_top = -4.0
+offset_right = -2.0
+offset_bottom = 21.0
+text = "灵敏度"
+
+[node name="sensitivity_in_aim" type="HSlider" parent="Camera3D/Control/menu/option_menu"]
+layout_mode = 0
+offset_left = 590.0
+offset_top = 231.0
+offset_right = 1030.0
+offset_bottom = 247.0
+min_value = 0.01
+max_value = 10.0
+step = 0.01
+value = 1.0
+script = ExtResource("10_w14gx")
+
+[node name="value" type="Label" parent="Camera3D/Control/menu/option_menu/sensitivity_in_aim"]
+layout_mode = 0
+offset_left = 455.0
+offset_top = -8.0
+offset_right = 497.0
+offset_bottom = 18.0
+text = "value
+"
+
+[node name="Label" type="Label" parent="Camera3D/Control/menu/option_menu/sensitivity_in_aim"]
+layout_mode = 0
+offset_left = -92.0
+offset_top = -4.0
+offset_right = -2.0
+offset_bottom = 21.0
+text = "灵敏度(瞄准)"
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_bigyb")
+
+[connection signal="pressed" from="Camera3D/Control/dead/relive_button" to="." method="_on_relive_button_pressed"]
+[connection signal="pressed" from="Camera3D/Control/character_choice/assault" to="." method="_on_assault_pressed"]
+[connection signal="pressed" from="Camera3D/Control/character_choice/investigation" to="." method="_on_investigation_pressed"]
